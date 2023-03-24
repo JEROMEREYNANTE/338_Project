@@ -124,4 +124,63 @@ class CircularSinglyLL:
 
         return node
     
+    def delete(self, node: CSNode) -> CSNode:
+        """
+        Deletes a node from the list
+        """
+        if self.is_empty():
+            return None
+
+        if self.head == node:
+            return self.delete_head()
+
+        curr = self.head
+        while curr.next != node:
+            curr = curr.next
+
+        if curr.next != node:
+            return None
+
+        curr.next = curr.next.next
+        self.size -= 1
+
+        return node
+    
+    def sort(self) -> None:
+        """
+        Sorts the list
+        """
+        if self.is_empty():
+            return
+
+        curr = self.head
+        while curr.next != self.head:
+            next = curr.next
+            while next != self.head:
+                if curr.data > next.data:
+                    curr.data, next.data = next.data, curr.data
+                next = next.next
+            curr = curr.next
+
+    def clear(self) -> None:
+        """
+        Clears the list
+        """
+        self.head = None
+        self.size = 0
+
+    def print(self) -> None:
+        """
+        Prints the list
+        """
+        if self.is_empty():
+            return
+
+        curr = self.head
+        while curr.next != self.head:
+            print(curr.data, end=" ")
+            curr = curr.next
+        print(curr.data)
+
+    
     
