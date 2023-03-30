@@ -1,186 +1,120 @@
-from typing import Any
-
-
-class CSNode:
-    """
-    Circular Singly Linked List node class
-    """
-    def __init__(self, data: Any = None, next: 'CSNode' = None):
+class Node:
+    def __init__(self, data=None):
         self.data = data
-        self.next = next
+        self.next = None
 
-
-class CircularSinglyLL:
-    """
-    Circular Singly Linked List class
-    """
-    def __init__(self, head: CSNode = None, size: int = 0):
-        self.head = head
-        self.size = size
-
-        if head is not None:
-            # Loop the head to reference itself
-            head.next = head
-
-    def is_empty(self) -> bool:
-        """
-        Checks if the list is empty
-        """
-        return self.head is None
-
-    def get_size(self) -> int:
-        """
-        Returns the size of the list
-        """
-        return self.size
-
-    def insert_head(self, node: CSNode) -> None:
-        """
-        Inserts a node at the head of the list
-        """
-        if self.is_empty():
-            node.next = node
-        else:
-            tail = self.head
-            while tail.next != self.head:
-                tail = tail.next
-
-            node.next = self.head
-            tail.next = node
-
-        self.head = node
-        self.size += 1
-
-    def insert_tail(self, node: CSNode) -> None:
-        """
-        Inserts a node at the tail of the list
-        """
-        if self.is_empty():
-            node.next = node
-            self.head = node
-        else:
-            tail = self.head
-            while tail.next != self.head:
-                tail = tail.next
-
-            node.next = self.head
-            tail.next = node
-            
-        self.size += 1
-
-    def insert(self, node: CSNode) -> None:
-        """
-        Inserts a node at the tail of the list
-        """
-        self.insert_tail(node)
-
-    def search(self, node: CSNode) -> CSNode:
-        """
-        Searches for a node in the list
-        """
-        if self.is_empty():
-            return None
-
-        curr = self.head
-        while curr.next != self.head:
-            if curr.data == node.data:
-                return curr
-            curr = curr.next
-
-        return None
-    
-    def delete_head(self) -> CSNode:
-        """
-        Deletes the head node of the list
-        """
-        if self.is_empty():
-            return None
-
-        tail = self.head
-        while tail.next != self.head:
-            tail = tail.next
-
-        node = self.head
-        tail.next = node.next
-        self.head = node.next
-        self.size -= 1
-
-        return node
-    
-    def delete_tail(self) -> CSNode:
-        """
-        Deletes the tail node of the list
-        """
-        if self.is_empty():
-            return None
-
-        tail = self.head
-        while tail.next.next != self.head:
-            tail = tail.next
-
-        node = tail.next
-        tail.next = self.head
-        self.size -= 1
-
-        return node
-    
-    def delete(self, node: CSNode) -> CSNode:
-        """
-        Deletes a node from the list
-        """
-        if self.is_empty():
-            return None
-
-        if self.head == node:
-            return self.delete_head()
-
-        curr = self.head
-        while curr.next != node:
-            curr = curr.next
-
-        if curr.next != node:
-            return None
-
-        curr.next = curr.next.next
-        self.size -= 1
-
-        return node
-    
-    def sort(self) -> None:
-        """
-        Sorts the list
-        """
-        if self.is_empty():
-            return
-
-        curr = self.head
-        while curr.next != self.head:
-            next = curr.next
-            while next != self.head:
-                if curr.data > next.data:
-                    curr.data, next.data = next.data, curr.data
-                next = next.next
-            curr = curr.next
-
-    def clear(self) -> None:
-        """
-        Clears the list
-        """
+class CircularSinglyLinkedList:
+    def __init__(self):
         self.head = None
         self.size = 0
 
-    def print(self) -> None:
-        """
-        Prints the list
-        """
-        if self.is_empty():
-            return
+    def insert_head(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            new_node.next = self.head
+        else:
+            current = self.head
+            while current.next != self.head:
+                current = current.next
+            current.next = new_node
+            new_node.next = self.head
+            self.head = new_node
+        self.size += 1
 
-        curr = self.head
-        while curr.next != self.head:
-            print(curr.data, end=" ")
-            curr = curr.next
-        print(curr.data)
+    def insert_tail(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            new_node.next = self.head
+        else:
+            current = self.head
+            while current.next != self.head:
+                current = current.next
+            current.next = new_node
+            new_node.next = self.head
+        self.size += 1
 
-    
-    
+    def insert(self, data, position):
+        if position < 0 or position > self.size:
+            raise IndexError("Insertion index out of range")
+        if position == 0:
+            self.insert_head(data)
+        elif position == self.size:
+            self.insert_tail(data)
+        else:
+            new_node = Node(data)
+            current = self.head
+            for i in range(position-1):
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
+            self.size += 1
+
+    def search(self, data):
+        if not self.head:
+            return None
+        current = self.head
+        while current.next != self.head:
+            if current.data == data:
+                return current
+            current = current.next
+        if current.data == data:
+            return current
+        return None
+
+    def delete_head(self):
+        if not self.head:
+            raise Exception("List is empty")
+        if self.size == 1:
+            self.head = None
+        else:
+            current = self.head
+            while current.next != self.head:
+                current = current.next
+            current.next = self.head.next
+            self.head = self.head.next
+        self.size -= 1
+
+    def delete_tail(self):
+        if not self.head:
+            raise Exception("List is empty")
+        if self.size == 1:
+            self.head = None
+        else:
+            current = self.head
+            while current.next.next != self.head:
+                current = current.next
+            current.next = self.head
+        self.size -= 1
+
+    def delete(self, data):
+        if not self.head:
+            raise Exception("List is empty")
+        if self.head.data == data:
+            self.delete_head()
+        else:
+            current = self.head
+            while current.next != self.head:
+                if current.next.data == data:
+                    current.next = current.next.next
+                    self.size -= 1
+                    return
+                current = current.next
+            raise ValueError("Node not found in list")
+
+    def clear(self):
+        self.head = None
+        self.size = 0
+
+    def print(self):
+        if not self.head:
+            print("List is empty")
+        else:
+            current = self.head
+            print(f"List size: {self.size}")
+            print("List content:", end=" ")
+            while current.next != self.head:
+                print(current.data, end=" ")
+                current = current.next
+            print(current.data)

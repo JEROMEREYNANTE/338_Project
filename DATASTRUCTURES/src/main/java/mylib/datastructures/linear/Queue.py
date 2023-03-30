@@ -1,17 +1,41 @@
-class Queue:
+from DATASTRUCTURES.src.main.java.mylib.datastructures.linear.SLL import SinglyLinkedList
+
+
+class Queue(SinglyLinkedList):
     def __init__(self):
-        self.items = []
+        super().__init__()
 
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def enqueue(self, item):
-        self.items.append(item)
+    def enqueue(self, data):
+        self.insert_tail(data)
 
     def dequeue(self):
+        return self.delete_head()
+
+    def is_empty(self):
+        return super().is_empty()
+
+    def insert_head(self, node):
+        pass
+
+    def delete_head(self):
         if self.is_empty():
             return None
-        return self.items.pop(0)
+        head = self.head
+        self.head = head.next
+        self.size -= 1
+        return head.data
 
-    def size(self):
-        return len(self.items)
+    def insert_tail(self, node):
+        super().insert_tail(node)
+
+    def delete_tail(self):
+        pass
+
+    def get_head(self):
+        return super().get_head()
+
+    def get_tail(self):
+        return super().get_tail()
+
+    def print(self):
+        super().print()
