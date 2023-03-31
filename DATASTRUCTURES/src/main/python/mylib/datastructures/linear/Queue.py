@@ -1,4 +1,4 @@
-from DATASTRUCTURES.src.main.java.mylib.datastructures.linear.SLL import SinglyLinkedList
+from SLL import SinglyLinkedList
 
 
 class Queue(SinglyLinkedList):

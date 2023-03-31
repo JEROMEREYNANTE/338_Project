@@ -1,11 +1,5 @@
-from main.java.mylib.datastructures.linear.SLL import SinglyLinkedList
+from SLL import SinglyLinkedList
 
-
-class DNode:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-        self.prev = None
 
 class DoublyLinkedList(SinglyLinkedList):
     def __init__(self, head=None):
