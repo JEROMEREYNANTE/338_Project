@@ -125,6 +125,20 @@ class BST:
             print(node.data, end=' ')
             self._printInOrderHelper(node.right)
     def printBF(self):
-        pass
+        if self.root is None:
+            return
+
+        queue = [self.root]
+
+        while queue:
+            level_size = len(queue)
+            for i in range(level_size):
+                node = queue.pop(0)
+                print(node.val, end=' ')
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            print() # move to the next line for the next level
 
 
