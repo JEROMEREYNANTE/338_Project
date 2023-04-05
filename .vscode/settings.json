@@ -1,6 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./DATASTRUCTURES/src/main/python/mylib",
-        "./DATASTRUCTURES/src/main/python/mylib/datastructures/linear/nodes"
-    ]
-}
