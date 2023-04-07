@@ -99,10 +99,6 @@ public class CSLL extends SLL{
 
     @Override
     public void clear(SNode node) {
-        if (head == null) {
-            return;
-        }
-        clear(node);
         head = null;
         tail = null;
         size = 0;

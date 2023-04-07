@@ -197,10 +197,6 @@ public class SLL {
     }
 
     public void clear(SNode node) {
-        if (head == null) {
-            return;
-        }
-        clear(node);
         head = null;
         tail = null;
         size = 0;

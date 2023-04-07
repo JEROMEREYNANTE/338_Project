@@ -15,11 +15,6 @@ public class StackLL extends SLL{
         return node;
     }
 
-    /*
-    public SNode peek() {
-        return super.head;
-    }
-    */
 
     @Override
     public void insertTail(SNode node) {
