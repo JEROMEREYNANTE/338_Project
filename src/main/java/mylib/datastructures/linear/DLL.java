@@ -41,6 +41,7 @@ public class DLL {
             head = node;
         }
         size++;
+        node.setNext(null);
     }
     public void Insert(DNode node, int position){
         if(position < 0 || position > size){
