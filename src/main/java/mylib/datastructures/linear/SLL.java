@@ -30,6 +30,7 @@ public class SLL {
             head = node;
         }
         size++;
+        node.setNext(null);
     }
 
     public void insertTail(SNode node) {
