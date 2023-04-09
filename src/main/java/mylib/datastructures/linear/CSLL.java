@@ -19,23 +19,24 @@ public class CSLL extends SLL{
     public void insertHead(SNode node) {
         if (head == null) {
             head = node;
-            head.setNext(head); // set the tail to be the head to create a circular loop
+            tail = node;
+            node.next = head;
         } else {
-            node.setNext(head);
+            node.next = head;
             head = node;
-            tail.setNext(head); // update the tail to reference the new head
+            tail.next = head;
         }
         size++;
     }
 
     @Override
     public void insertTail(SNode node) {
-        if (tail == null) {
+        if (head == null) {
             insertHead(node);
         } else {
-            node.setNext(head);
-            tail.setNext(node);
+            tail.next = node;
             tail = node;
+            tail.next = head;
             size++;
         }
     }
