@@ -25,12 +25,15 @@ public class SLL {
         if (head == null) {
             head = node;
             tail = node;
+            size++;
         } else {
             node.setNext(head);
             head = node;
         }
-        size++;
         node.setNext(null);
+
+
+
     }
 
     public void insertTail(SNode node) {
