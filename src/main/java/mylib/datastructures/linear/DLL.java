@@ -35,12 +35,13 @@ public class DLL {
         if(head == null){
             head = node;
             tail = node;
+            size++;
         } else {
             head.setPrev(node);
             node.setNext(head);
             head = node;
         }
-        size++;
+
         node.setNext(null);
     }
     public void Insert(DNode node, int position){
