@@ -159,7 +159,7 @@ public class test {
         mySll1.delete(node1);
         mySll1.deleteTail();
         mySll1.deleteHead();
-        mySll1.insertTail(node1);
+        mySll1.insertTail(node2);
         System.out.println("Printing mySll1 for the first time");
         mySll1.print();
         System.out.println("Printing mySll for the first time");

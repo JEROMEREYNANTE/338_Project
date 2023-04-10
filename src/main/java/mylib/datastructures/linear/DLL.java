@@ -64,6 +64,7 @@ public class DLL {
             size++;
 
         }
+        head.setNext(null);
     }
 
     public void sortedInsert(DNode node) {
@@ -85,6 +86,7 @@ public class DLL {
             current.setPrev(node);
             size++;
         }
+        head.setNext(null);
     }
 
     private boolean isSorted() {

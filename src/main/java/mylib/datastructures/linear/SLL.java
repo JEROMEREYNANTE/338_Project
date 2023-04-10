@@ -18,7 +18,8 @@ public class SLL {
     public SLL(SNode head) {
         this.head = head;
         this.tail = head;
-        this.size = 1;
+        //this.size = 1;
+
     }
 
     public void insertHead(SNode node) {
@@ -31,8 +32,6 @@ public class SLL {
             head = node;
         }
         node.setNext(null);
-
-
 
     }
 
@@ -64,6 +63,7 @@ public class SLL {
             current.setNext(node);
             size++;
         }
+        head.setNext(null);
     }
 
     public void sortedInsert(SNode node) {
@@ -86,6 +86,7 @@ public class SLL {
                 tail = node;
             }
         }
+        head.setNext(null);
     }
 
     private boolean isSorted() {
