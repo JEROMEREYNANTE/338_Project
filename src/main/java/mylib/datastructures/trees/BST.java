@@ -11,27 +11,56 @@ import java.util.Queue;
 public class BST {
     private TNode root;
 
+    /**
+     * Default constructor
+     */
     public BST() {
         root = null;
     }
 
+    /**
+     * Overload constructor
+     * 
+     * @param val the data of the root node
+     */
     public BST(int val) {
-        this.root = new TNode(val,0,null,null,null);
+        this.root = new TNode(val, 0, null, null, null);
     }
 
+    /**
+     * Overload constructor
+     * 
+     * @param obj the root node
+     */
     public BST(TNode obj) {
         this.root = obj;
     }
 
+    /**
+     * setter for the root
+     * 
+     * @param root the root node
+     */
     public void setRoot(TNode root) {
         this.root = root;
     }
 
+    /**
+     * getter for the root
+     * 
+     * @return the root node
+     */
     public TNode getRoot() {
         return root;
     }
+
+    /**
+     * insert a data into the tree
+     * 
+     * @param val the data to be inserted
+     */
     public void insert(int val) {
-        TNode newNode = new TNode(val,0,null,null,null);
+        TNode newNode = new TNode(val, 0, null, null, null);
         if (root == null) {
             root = newNode;
         } else {
@@ -39,6 +68,12 @@ public class BST {
         }
     }
 
+    /**
+     * insert a node into the tree
+     * 
+     * @param node    the root of the tree
+     * @param newNode the node to be inserted
+     */
     private void insert(TNode node, TNode newNode) {
         if (newNode.getData() < node.getData()) {
             if (node.getLeft() == null) {
@@ -55,6 +90,11 @@ public class BST {
         }
     }
 
+    /**
+     * insert a node into the tree
+     * 
+     * @param node the node to be inserted
+     */
     public void insert(TNode node) {
         if (root == null) {
             root = node;
@@ -63,10 +103,22 @@ public class BST {
         }
     }
 
+    /**
+     * delete a node from the tree
+     * 
+     * @param val the value of the node to be deleted
+     */
     public void delete(int val) {
         root = delete(root, val);
     }
 
+    /**
+     * delete a node from the tree
+     * 
+     * @param node the root of the tree
+     * @param val  the value of the node to be deleted
+     * @return the node that is deleted
+     */
     private TNode delete(TNode node, int val) {
         if (node == null) {
             System.out.println("Value " + val + " is not in the tree.");
@@ -92,6 +144,12 @@ public class BST {
         return node;
     }
 
+    /**
+     * find the minimum node in the tree
+     * 
+     * @param node the root of the tree
+     * @return the minimum node
+     */
     private TNode findMin(TNode node) {
         while (node.getLeft() != null) {
             node = node.getLeft();
@@ -99,10 +157,23 @@ public class BST {
         return node;
     }
 
+    /**
+     * search a node in the tree
+     * 
+     * @param val the value of the node to be searched
+     * @return the node that is searched
+     */
     public TNode search(int val) {
         return search(root, val);
     }
 
+    /**
+     * search a node in the tree
+     * 
+     * @param node the root of the tree
+     * @param val  the value of the node to be searched
+     * @return the node that is searched
+     */
     private TNode search(TNode node, int val) {
         if (node == null || node.getData() == val) {
             return node;
@@ -114,11 +185,19 @@ public class BST {
         }
     }
 
+    /**
+     * print the tree in order
+     */
     public void printInOrder() {
         printInOrder(root);
         System.out.println();
     }
 
+    /**
+     * print the tree in order
+     * 
+     * @param node the root of the tree
+     */
     private void printInOrder(TNode node) {
         if (node != null) {
             printInOrder(node.getLeft());
@@ -126,6 +205,10 @@ public class BST {
             printInOrder(node.getRight());
         }
     }
+
+    /**
+     * print the tree in BF
+     */
     public void printBF() {
         if (root == null) {
             return;
