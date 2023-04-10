@@ -2,26 +2,42 @@ package main.java.mylib.datastructures.linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
+/**
+ * Doubly Linked List class
+ */
 public class DLL {
     private DNode head;
     private DNode tail;
     private int size;
 
-    // Constructor
+    /**
+     * Default constructor
+     */
     public DLL() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
-    // Overload constructor
+
+    /**
+     * Overload constructor
+     * 
+     * @param head
+     */
     public DLL(DNode head) {
         this.head = head;
         this.tail = head;
         this.size = 1;
 
     }
-    public void InsertTail(DNode node){
-        if(tail == null){
+
+    /**
+     * Insert a node at the tail of the list
+     * 
+     * @param node
+     */
+    public void InsertTail(DNode node) {
+        if (tail == null) {
             head = node;
             tail = node;
         } else {
@@ -31,8 +47,14 @@ public class DLL {
         }
         size++;
     }
-    public void InsertHead(DNode node){
-        if(head == null){
+
+    /**
+     * Insert a node at the head of the list
+     * 
+     * @param node
+     */
+    public void InsertHead(DNode node) {
+        if (head == null) {
             head = node;
             tail = node;
             size++;
@@ -44,17 +66,24 @@ public class DLL {
 
         node.setNext(null);
     }
-    public void Insert(DNode node, int position){
-        if(position < 0 || position > size){
+
+    /**
+     * Insert a node at a specific position in the list
+     * 
+     * @param node
+     * @param position
+     */
+    public void Insert(DNode node, int position) {
+        if (position < 0 || position > size) {
             throw new IndexOutOfBoundsException();
         }
-        if(position == 0){
+        if (position == 0) {
             InsertHead(node);
-        } else if(position == size){
+        } else if (position == size) {
             InsertTail(node);
         } else {
             DNode current = head;
-            for(int i = 0; i < position; i++){
+            for (int i = 0; i < position; i++) {
                 current = current.getNext();
             }
             node.setNext(current.getNext());
@@ -67,6 +96,11 @@ public class DLL {
         head.setNext(null);
     }
 
+    /**
+     * Sort the list
+     * 
+     * @param node
+     */
     public void sortedInsert(DNode node) {
         if (!isSorted()) {
             Sort();
@@ -89,6 +123,11 @@ public class DLL {
         head.setNext(null);
     }
 
+    /**
+     * checks if the list is sorted
+     * 
+     * @return true if sorted, false otherwise
+     */
     private boolean isSorted() {
         if (head == null || head.getNext() == null) {
             return true;
@@ -103,6 +142,12 @@ public class DLL {
         return true;
     }
 
+    /**
+     * Search for a node in the list
+     * 
+     * @param node
+     * @return the node if found, null otherwise
+     */
     public DNode search(DNode node) {
         DNode current = head;
         while (current != null) {
@@ -113,7 +158,11 @@ public class DLL {
         }
         return null;
     }
-    public void DeleteHead(){
+
+    /**
+     * Deletes the head of the list
+     */
+    public void DeleteHead() {
         if (head == null) {
             throw new IndexOutOfBoundsException();
         }
@@ -127,7 +176,10 @@ public class DLL {
         }
     }
 
-    public void DeleteTail(){
+    /**
+     * Deletes the tail of the list
+     */
+    public void DeleteTail() {
         if (tail == null) {
             return;
         }
@@ -142,8 +194,12 @@ public class DLL {
         size--;
     }
 
-
-    public void Delete(DNode node){
+    /**
+     * Deletes a node from the list
+     * 
+     * @param node
+     */
+    public void Delete(DNode node) {
         if (head == null) {
             return;
         }
@@ -174,6 +230,9 @@ public class DLL {
         size--;
     }
 
+    /**
+     * Sorts the list
+     */
     public void Sort() {
         if (head == null) {
             return;
@@ -214,6 +273,11 @@ public class DLL {
         }
     }
 
+    /**
+     * Clears the list
+     * 
+     * @param node
+     */
     public void clear(DNode node) {
         if (node != null) {
             clear(node.getNext());
@@ -222,12 +286,15 @@ public class DLL {
         }
     }
 
-    public void Print(){
+    /**
+     * Prints the list that includes the size, sorted status, and the list
+     */
+    public void Print() {
         System.out.println("Sorted: " + isSorted());
         System.out.println("Size: " + size);
         DNode current = head;
         System.out.print("List: ");
-        while(current != null){
+        while (current != null) {
             System.out.print(current.getData() + " ");
             current = current.getNext();
         }

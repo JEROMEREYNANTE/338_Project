@@ -1,23 +1,38 @@
 package main.java.mylib.datastructures.linear;
+
 import main.java.mylib.datastructures.nodes.DNode;
-public class CDLL extends DLL{
+
+/**
+ * Circular Doubly Linked List that extends the DLL class
+ */
+public class CDLL extends DLL {
     private DNode head;
     private DNode tail;
     private int size;
 
-    // Constructor
+    /**
+     * Default constructor
+     */
     public CDLL() {
         super();
     }
 
-    // Overload constructor
+    /**
+     * Overload constructor
+     * 
+     * @param node
+     */
     public CDLL(DNode node) {
         super(node);
         head.setPrev(tail);
         tail.setNext(head);
     }
 
-
+    /**
+     * Insert a node at the tail of the list
+     * 
+     * @param node
+     */
     @Override
     public void InsertTail(DNode node) {
         if (tail == null) {
@@ -35,7 +50,11 @@ public class CDLL extends DLL{
         size++;
     }
 
-
+    /**
+     * Insert a node at the head of the list
+     * 
+     * @param node
+     */
     @Override
     public void InsertHead(DNode node) {
         if (head == null) {
@@ -53,7 +72,9 @@ public class CDLL extends DLL{
         size++;
     }
 
-
+    /**
+     * Deletes the tail of the list
+     */
     @Override
     public void DeleteTail() {
         if (tail == null) {
@@ -71,7 +92,9 @@ public class CDLL extends DLL{
         size--;
     }
 
-
+    /**
+     * Deletes the head of the list
+     */
     @Override
     public void DeleteHead() {
         if (head == null) {
@@ -89,7 +112,12 @@ public class CDLL extends DLL{
         size--;
     }
 
-
+    /**
+     * Insert a node at a specific position in the list
+     * 
+     * @param node
+     * @param position
+     */
     @Override
     public void Insert(DNode node, int position) {
         if (position < 0 || position > size) {
@@ -112,7 +140,11 @@ public class CDLL extends DLL{
         }
     }
 
-
+    /**
+     * Deletes a node from the list
+     * 
+     * @param node
+     */
     @Override
     public void Delete(DNode node) {
         if (head == null) {
@@ -131,7 +163,9 @@ public class CDLL extends DLL{
         size--;
     }
 
-
+    /**
+     * Sorts the list
+     */
     @Override
     public void Sort() {
         if (head == null) {
@@ -153,6 +187,12 @@ public class CDLL extends DLL{
         }
     }
 
+    /**
+     * Search for a node in the list
+     * 
+     * @param node
+     * @return the node if found, null otherwise
+     */
     @Override
     public DNode search(DNode node) {
         if (head == null) {
@@ -168,6 +208,11 @@ public class CDLL extends DLL{
         return null;
     }
 
+    /**
+     * Sort the list
+     * 
+     * @param node
+     */
     @Override
     public void sortedInsert(DNode node) {
         if (head == null) {

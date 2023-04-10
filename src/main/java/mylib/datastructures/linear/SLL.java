@@ -2,26 +2,41 @@ package main.java.mylib.datastructures.linear;
 
 import main.java.mylib.datastructures.nodes.SNode;
 
+/**
+ * Singly Linked List class
+ */
 public class SLL {
 
-
-    protected SNode head; //change to private
+    protected SNode head;
     private SNode tail;
     private int size;
 
+    /**
+     * Default constructor
+     */
     public SLL() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
 
+    /**
+     * Overload constructor
+     * 
+     * @param head
+     */
     public SLL(SNode head) {
         this.head = head;
         this.tail = head;
-        //this.size = 1;
+        // this.size = 1;
 
     }
 
+    /**
+     * Insert a node at the head of the list
+     * 
+     * @param node
+     */
     public void insertHead(SNode node) {
         if (head == null) {
             head = node;
@@ -35,6 +50,11 @@ public class SLL {
 
     }
 
+    /**
+     * Insert a node at the tail of the list
+     * 
+     * @param node
+     */
     public void insertTail(SNode node) {
         if (tail == null) {
             head = node;
@@ -46,6 +66,12 @@ public class SLL {
         size++;
     }
 
+    /**
+     * Insert a node at a specific position in the list
+     * 
+     * @param node
+     * @param position
+     */
     public void insert(SNode node, int position) {
         if (position < 0 || position > size) {
             throw new IndexOutOfBoundsException();
@@ -66,6 +92,11 @@ public class SLL {
         head.setNext(null);
     }
 
+    /**
+     * Sort the list
+     * 
+     * @param node
+     */
     public void sortedInsert(SNode node) {
         if (!isSorted()) {
             sort();
@@ -89,6 +120,11 @@ public class SLL {
         head.setNext(null);
     }
 
+    /**
+     * checks if the list is sorted
+     * 
+     * @return true if sorted, false otherwise
+     */
     private boolean isSorted() {
         if (head == null || head.getNext() == null) {
             return true;
@@ -103,6 +139,12 @@ public class SLL {
         return true;
     }
 
+    /**
+     * Search for a node in the list
+     * 
+     * @param node
+     * @return the node if found, null otherwise
+     */
     public SNode search(SNode node) {
         SNode current = head;
         while (current != null) {
@@ -114,6 +156,9 @@ public class SLL {
         return null;
     }
 
+    /**
+     * Deletes the head of the list
+     */
     public void deleteHead() {
         if (head == null) {
             return;
@@ -125,6 +170,9 @@ public class SLL {
         }
     }
 
+    /**
+     * Deletes the tail of the list
+     */
     public void deleteTail() {
         if (tail == null) {
             return;
@@ -144,6 +192,11 @@ public class SLL {
         size--;
     }
 
+    /**
+     * Deletes a node from the list
+     * 
+     * @param node
+     */
     public void delete(SNode node) {
         if (head == null) {
             return;
@@ -166,6 +219,9 @@ public class SLL {
         }
     }
 
+    /**
+     * Sorts the list
+     */
     public void sort() {
         if (head == null) {
             return;
@@ -201,6 +257,11 @@ public class SLL {
         }
     }
 
+    /**
+     * Clears the list
+     * 
+     * @param node
+     */
     public void clear(SNode node) {
         head = null;
         tail = null;
@@ -208,8 +269,10 @@ public class SLL {
 
     }
 
-
-    public void print(){
+    /**
+     * Prints the list that includes the size, sorted status, and the list
+     */
+    public void print() {
         System.out.println("Sorted: " + isSorted());
         System.out.println("Size: " + size);
         SNode current = head;
@@ -220,5 +283,3 @@ public class SLL {
         System.out.println();
     }
 }
-
-

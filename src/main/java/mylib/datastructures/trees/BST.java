@@ -5,6 +5,9 @@ import main.java.mylib.datastructures.nodes.TNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Binary Search Tree class
+ */
 public class BST {
     private TNode root;
 

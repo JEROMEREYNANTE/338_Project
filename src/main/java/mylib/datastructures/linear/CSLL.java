@@ -1,20 +1,37 @@
 package main.java.mylib.datastructures.linear;
+
 import main.java.mylib.datastructures.nodes.SNode;
 
-public class CSLL extends SLL{
+/**
+ * Circular Singly Linked List class that extends the SLL class
+ */
+public class CSLL extends SLL {
     private SNode head;
     private SNode tail;
     private int size;
 
+    /**
+     * Default constructor
+     */
     public CSLL() {
         super();
     }
 
+    /**
+     * Overload constructor
+     * 
+     * @param head
+     */
     public CSLL(SNode head) {
         super(head);
-        head.setNext(head); // set the tail to be the head to create a circular loop
+        head.setNext(head);
     }
 
+    /**
+     * Insert a node at the head of the list
+     * 
+     * @param node
+     */
     @Override
     public void insertHead(SNode node) {
         if (head == null) {
@@ -29,6 +46,11 @@ public class CSLL extends SLL{
         size++;
     }
 
+    /**
+     * Insert a node at the tail of the list
+     * 
+     * @param node
+     */
     @Override
     public void insertTail(SNode node) {
         if (head == null) {
@@ -41,27 +63,33 @@ public class CSLL extends SLL{
         }
     }
 
+    /**
+     * Deletes the head of the list
+     */
     @Override
     public void deleteHead() {
         if (head == null) {
             return;
         }
-        if (head.getNext() == head) { // if there's only one node in the list
+        if (head.getNext() == head) {
             head = null;
             tail = null;
         } else {
             head = head.getNext();
-            tail.setNext(head); // update the tail to reference the new head
+            tail.setNext(head);
         }
         size--;
     }
 
+    /**
+     * Deletes the tail of the list
+     */
     @Override
     public void deleteTail() {
         if (tail == null) {
             return;
         }
-        if (tail == head) { // if there's only one node in the list
+        if (tail == head) {
             head = null;
             tail = null;
         } else {
@@ -69,12 +97,17 @@ public class CSLL extends SLL{
             while (current.getNext() != tail) {
                 current = current.getNext();
             }
-            current.setNext(head); // update the node before the tail to reference the head
+            current.setNext(head);
             tail = current;
         }
         size--;
     }
 
+    /**
+     * Deletes a node from the list
+     * 
+     * @param node
+     */
     @Override
     public void delete(SNode node) {
         if (head == null) {
@@ -98,6 +131,11 @@ public class CSLL extends SLL{
         }
     }
 
+    /**
+     * Clears the list
+     * 
+     * @param node
+     */
     @Override
     public void clear(SNode node) {
         head = null;
