@@ -290,15 +290,20 @@ public class DLL {
      * Prints the list that includes the size, sorted status, and the list
      */
     public void Print() {
-        System.out.println("Sorted: " + isSorted());
-        System.out.println("Size: " + size);
+        System.out.println("Sorted Status for Doubly Linked List: " + isSorted());
+        System.out.println("Size for Doubly Linked List: " + size);
         DNode current = head;
-        System.out.print("List: ");
+        System.out.print("List Contents for Doubly Linked List: ");
+        int getData = 0;
         while (current != null) {
+            getData = current.getData();
             System.out.print(current.getData() + " ");
             current = current.getNext();
         }
-        System.out.println();
+        if(current == null && getData == 0){
+            System.out.println("Empty List");
+        }
+        System.out.println("\n");
 
     }
 }

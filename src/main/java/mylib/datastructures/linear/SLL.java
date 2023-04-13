@@ -273,13 +273,19 @@ public class SLL {
      * Prints the list that includes the size, sorted status, and the list
      */
     public void print() {
-        System.out.println("Sorted: " + isSorted());
-        System.out.println("Size: " + size);
+        System.out.println("Sorted Status for Singly Linked List: " + isSorted());
+        System.out.println("Size for Singly Linked List: " + size);
         SNode current = head;
+        System.out.print("List Contents for Singly Linked List: ");
+        int getData = 0;
         while (current != null) {
+            getData = current.getData();
             System.out.print(current.getData() + " ");
             current = current.getNext();
         }
-        System.out.println();
+        if(current == null && getData == 0){
+            System.out.println("Empty List");
+        }
+        System.out.println("\n");
     }
 }
