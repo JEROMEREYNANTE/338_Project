@@ -9,41 +9,41 @@ import main.java.mylib.datastructures.trees.BST;
 
 public class test {
     public static void main(String[] args) {
-        /*
-        TNode root = new TNode(10, 0, null, null, null);
 
-        TNode leftChild = new TNode(5, 0, root, null, null);
-        root.setLeft(leftChild);
+        TNode roots = new TNode(10, 0, null, null, null);
 
-        TNode rightChild = new TNode(15, 0, root, null, null);
-        root.setRight(rightChild);
+        TNode leftChild = new TNode(5, 0, roots, null, null);
+        roots.setLeft(leftChild);
+
+        TNode rightChild = new TNode(15, 0, roots, null, null);
+        roots.setRight(rightChild);
 
         System.out.println("Initial tree:");
-        printTree(root);
+        printTree(roots);
 
         // Modify the nodes
-        root.setData(20);
+        roots.setData(20);
         leftChild.setBalance(-1);
         rightChild.setParent(leftChild);
 
         System.out.println("\nModified tree:");
-        printTree(root);
+        printTree(roots);
 
-        TNode node1 = new TNode();
-        TNode node2 = new TNode(5, 0, null, null, null);
-        TNode node3 = new TNode(10, 0, null, null, null);
+        TNode node1_ = new TNode();
+        TNode node2_ = new TNode(5, 0, null, null, null);
+        TNode node3_ = new TNode(10, 0, null, null, null);
 
         // Set parent and children for nodes
-        node2.setLeft(node1);
-        node2.setRight(node3);
-        node1.setParent(node2);
-        node3.setParent(node2);
+        node2_.setLeft(node1_);
+        node2_.setRight(node3_);
+        node1_.setParent(node2_);
+        node3_.setParent(node2_);
 
         // Print node information
-        node2.print();
+        node2_.print();
 
         // Print node data as string
-        String dataAsString = node2.toString();
+        String dataAsString = node2_.toString();
         System.out.println("Node data as string: " + dataAsString);
         BST bst1 = new BST();
         System.out.println("BST1 (no arguments) root: " + bst1.getRoot()); // expect null
@@ -53,8 +53,8 @@ public class test {
         System.out.println("BST2 (one argument) root: " + bst2.getRoot().getData()); // expect 5
 
         // Test BST constructor with TNode argument
-        TNode node = new TNode(10, 0, null, null, null);
-        BST bst3 = new BST(node);
+        TNode node_ = new TNode(10, 0, null, null, null);
+        BST bst3 = new BST(node_);
         System.out.println("BST3 (TNode argument) root: " + bst3.getRoot().getData()); // expect 10
 
         // Test setRoot and getRoot methods
@@ -110,7 +110,7 @@ public class test {
         avl2.insert(70);
         avl2.printBF();
         avl2.search(70);
-         */
+
         SNode node1 = new SNode(1);
         SNode node2 = new SNode(2);
         SNode node3 = new SNode(3);
@@ -166,8 +166,6 @@ public class test {
         mySll.print();
         DLL myDll =  new DLL();
         DLL myDll1 = new DLL(node4);
-        myDll.Insert(node5,0);
-        myDll.Insert(node4,0);
         System.out.println("Printing myDll1 for the first time");
         myDll1.Print();
         System.out.println("Printing myDll for the first time");
