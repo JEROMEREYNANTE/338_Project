@@ -24,8 +24,6 @@ public class CDLL extends DLL {
      */
     public CDLL(DNode node) {
         super(node);
-        head.setPrev(tail);
-        tail.setNext(head);
     }
 
     /**
