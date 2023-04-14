@@ -93,6 +93,8 @@ public class test {
 
         AVL avl1 = new AVL();
         AVL avl2 = new AVL(7);
+        AVL avl3 = new AVL(new TNode(7,0,null,null,null));
+        avl3.getRoot();
         avl1.insert(root);
         avl1.printInOrder();
         avl1.setRoot(node);
@@ -162,7 +164,9 @@ public class test {
         mySll1.insertTail(node2);
         System.out.println("Printing mySll1 for the first time");
         mySll1.print();
+        mySll1.sortedInsert(node3);
         System.out.println("Printing mySll for the first time");
+        System.out.println(mySll1.search(node1));
         mySll.print();
         DLL myDll =  new DLL();
         DLL myDll1 = new DLL(node4);
@@ -172,9 +176,18 @@ public class test {
         myDll.Print();
         myDll.InsertHead(node4);
         myDll.sortedInsert(node5);
+        myDll1.search(node4);
         System.out.println("Printing myDll for the second time");
         myDll.Print();
+        myDll1.clear(node4);
+        myDll1.Delete(node4);
+        myDll1.Print();
         CSLL myCsll = new CSLL();
+        CSLL myCsll1 = new CSLL(node1);
+        System.out.println("Printing myCsll1 for the first time");
+        myCsll1.insert(node2,0);
+        myCsll1.insertTail(node3);
+        myCsll1.print();
         myCsll.insertHead(node3);
         myCsll.insertHead(node3);
         System.out.println("Printing myCsll for the first time");
@@ -183,6 +196,8 @@ public class test {
         System.out.println("Printing myCsll for the second time");
         myCsll.print();
         CDLL myCdll = new CDLL();
+        CDLL myCdll1 = new CDLL(node4);
+        myCdll1.Print();
         myCdll.sortedInsert(node5);
         myCdll.InsertHead(node4);
         myCdll.Insert(node5,1);
@@ -204,6 +219,9 @@ public class test {
         System.out.println("Printing myStack for the third time");
         myStack.print();
         QueueLL myQueue = new QueueLL();
+        QueueLL myQueue1 = new QueueLL(node1);
+        myQueue1.enqueue(node2);
+        myQueue1.print();
         myQueue.insert(node2,0);
         System.out.println("Printing myQueue for the first time");
         myQueue.print();
@@ -219,6 +237,7 @@ public class test {
         myQueue.enqueue(node1);
         System.out.println("Printing myQueue for the fifth time");
         myQueue.print();
+
     }
 
     public static void printTree(TNode node) {
